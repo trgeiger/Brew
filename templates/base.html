@@ -4,37 +4,50 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title>Brew</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-+ENW/yibaokMnme+vBLnHMphUYxHs34h9lpdbSLuAwGkOKFRl4C34WkjazBtb7eT" crossorigin="anonymous">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <title>Brew</title>
     </head>
     <body data-spy="scroll" data-target=".navbar" data-offset="50">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Brew</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Top</a></li>
-                        <li><a href="#">Chemex</a></li>
-                        <li><a href="#">V60 Pour</a></li>
-                        <li><a href="#">French Press</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <nav class="navbar navbar-default" data-spy="affix" data-offset-top="247">
+    		<div class="container-fluid">
+    			<div class="navbar-header">
+    				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    			</button>
+    				<a class="navbar-brand" href="/">Brew</a>
+    			</div>
+    			<div class="navbar-collapse collapse" id="myNav">
+    				<ul class="nav navbar-nav">
+    					<li><a href="/#pour">Main</a></li>
+    					<li><a href="/#french">Ratio Calculator</a></li>
+    					<li><a href="/about">About</a></li>
+    				</ul>
+    				<ul class="nav navbar-nav navbar-right">
+                        {% if username %}
+                        <li><a href=#>{{ username }}</a></li>
+                        {% else %}
+                        <li><a href="/signup">Sign Up</a></li>
+                        <li><a href="/login">Login</a></li>
+                        {% endif %}
+    					<li><a href="https://github.com/trgeiger/brew"><span class="fa fa-github" aria-hidden="true"></span> GitHub</a></li>
+    				</ul>
+    			</div>
+    		</div>
+    	</nav>
 
 
         {% block content %}
         {% endblock %}
 
+        <footer class="container-fluid text-center" id="footer">
+    		<p class="text-muted">Created by Tayler Geiger with much <i class="fa fa-coffee"></i> and <i class="fa fa-heart"></i></p>
+    		<p class="text-muted">Copyright 2016</p>
+    	</footer>
+
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
 </html>

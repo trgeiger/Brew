@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <form action="/signup" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="username" autofocus required value= {{ username }} >
+                    <span class="error">{{ uerror }}</span></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" pattern="^.{3,20}$" required>
+                    <span class="error">{{ perror }}</span></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td><input type="password" name="verify" pattern="^.{3,20}$" required>
+                    <span class="error">{{ verror }}</span></td>
+                </tr>
+                <tr>
+                    <td>Email (optional):</td>
+                    <td><input type="email" name="email" value= {{ email }}>
+                    <span class="error">{{ eerror }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

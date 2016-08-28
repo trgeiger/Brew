@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h1 class="text-center">What are you making?</h1>
-
+<div class="container-fluid text-center" id="top">
+    <h1 class="text-center">What are you making?</h1>
+    <div class="button-group-lg" role="group" id="buttonbar">
+        <button role="button" class="btn btn-primary">Chemex</button>
+        <button role="button" class="btn btn-success">French Press</button>
+        <button role="button" class="btn btn-info">Cold Brew</button>
+        <button role="button" class="btn btn-warning">Vacuum Pot</button>
+        <button role="button" class="btn btn-danger">Moka Pot</button>
+        <button role="button" class="btn btn-default">V60</button>
+    </div>
+</div>
+<div class="container-fluid text-center" id="chemex">
+    <h1 class="text-center">Chemex</h1>
+</div>
 
 {% endblock %}
