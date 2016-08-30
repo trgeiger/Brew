@@ -1,7 +1,14 @@
-from flask import Flask, render_template, request, session, g, redirect, url_for, abort, flash
+import os
+import sqlite3
 import re
+from flask import Flask, render_template, request, session, g, redirect, url_for, abort, flash
 
 app = Flask(__name__)
+app.config.from_object(__name__)
+
+# Default config and override config from environment variable
+app.config.from_object('config')
+app.config.from_envvar('BREW_SETTINGS', silent=True)
 
 # helper functions
 def signup_func():
@@ -81,3 +88,16 @@ def login():
 @app.route('/welcome', methods=['GET'])
 def welcome():
     return(render_template("welcome.html"))
+
+# error handlers
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
