@@ -1,10 +1,18 @@
 import os
 import sqlite3
+from datetime import datetime
 import re
 from flask import Flask, render_template, request, session, g, redirect, url_for, abort, flash
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 
 app = Flask(__name__)
 app.config.from_object(__name__)
+
+# extensions
+bootstrap = Bootstrap(app)
+moment = Moment(app)
+
 
 # Default config and override config from environment variable
 app.config.from_object('config')
