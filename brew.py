@@ -5,6 +5,9 @@ import re
 from flask import Flask, render_template, request, session, g, redirect, url_for, abort, flash
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from flask_wtf import Form
+from wtforms import StringField, SubmitField, PasswordField
+from wtforms.validators import Required
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -13,10 +16,15 @@ app.config.from_object(__name__)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
-
 # Default config and override config from environment variable
 app.config.from_object('config')
 app.config.from_envvar('BREW_SETTINGS', silent=True)
+
+
+# Forms
+class LoginForm(Form):
+    username = StringField('Username', validators=[Required()])
+    password = PasswordField('Password', validators=[Required()])
 
 # helper functions
 def signup_func():
