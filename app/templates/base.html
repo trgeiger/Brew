@@ -20,7 +20,7 @@
 		</div>
 		<div class="navbar-collapse collapse" id="myNav">
 			<ul class="nav navbar-nav">
-				<li><a href="/#pour">Main</a></li>
+				<li><a href="{{ url_for('main.index') }}">Main</a></li>
 				<li><a href="/#french">Ratio Calculator</a></li>
 				<li><a href="/about">About</a></li>
 			</ul>
@@ -28,7 +28,7 @@
                 {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
                 {% else %}
-                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
                 <li><a href="{{ url_for('auth.login') }}">Login</a></li>
                 {% endif %}
 				<li><a href="https://github.com/trgeiger/brew"><span class="fa fa-github" aria-hidden="true"></span> GitHub</a></li>

@@ -4,7 +4,7 @@ from . import auth
 from .. import db
 from ..models import User
 from ..email import send_email
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, SignupForm
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -29,11 +29,10 @@ def signup():
         db.session.add(user)
         flash("You can now login to your account.")
         return redirect(url_for("auth.login"))
+    return render_template('auth/signup.html', form=form)
 
 
-
-
-@auth.route("/logout")
+@auth.route('/logout')
 @login_required
 def logout():
     logout_user()
