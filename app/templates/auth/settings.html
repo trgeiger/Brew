@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Change Password{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Account Settings</h1>
+</div>
+<div class="col-md-4">
+    <ul>
+        <li><a href="{{ url_for('auth.change_password') }}">Change Password</a></li>
+        <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
+        <li><a href="#">Download Notebook</a></li>
+        <li><a href="#"><strong>Delete Account</strong></a></li>
+    </ul>
+</div>
+{% endblock %}

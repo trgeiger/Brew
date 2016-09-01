@@ -23,15 +23,23 @@
 				<li><a href="{{ url_for('main.index') }}">Main</a></li>
 				<li><a href="/#french">Ratio Calculator</a></li>
 				<li><a href="/about">About</a></li>
+                <li><a href="https://github.com/trgeiger/brew"><span class="fa fa-github" aria-hidden="true"></span> GitHub</a></li>
 			</ul>
+
+            <!-- Account Dropdown Menu -->
 			<ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="carat"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                        <li><a href="{{ url_for('auth.account_settings') }}">Account Settings</a></li>
+                    </ul>
+                </li>
                 {% else %}
                 <li><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
                 <li><a href="{{ url_for('auth.login') }}">Login</a></li>
                 {% endif %}
-				<li><a href="https://github.com/trgeiger/brew"><span class="fa fa-github" aria-hidden="true"></span> GitHub</a></li>
     		</ul>
     	</div>
     </div>
@@ -48,14 +56,14 @@
     {% endfor %}
 
     {% block page_content %}
-    {% endblock %}
+    {% endblock page_content %}
 
 </div>
 <footer class="container-fluid text-center" id="footer">
 	<p class="text-muted">Created by Tayler Geiger with much <i class="fa fa-coffee"></i> and <i class="fa fa-heart"></i></p>
 	<p class="text-muted">Copyright 2016</p>
 </footer>
-{% endblock %}
+{% endblock content %}
 
 {% block scripts %}
 {{ super() }}
