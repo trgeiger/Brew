@@ -5,14 +5,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY") or 'dev key'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
-    MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_PORT = 465
-    MAIL_USE_SSL = True
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    BREW_MAIL_SUBJECT_PREFIX = "[Brew]"
-    BREW_MAIL_SENDER = "Brew Admin <brewapp@gmail.com>"
-    BREW_ADMIN = os.environ.get("BREW_ADMIN")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @staticmethod
