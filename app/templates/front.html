@@ -2,6 +2,7 @@
 
 {% block page_content %}
 <div class="container-fluid text-center" id="top">
+    <h2 class="text-center">Hello{% if current_user.is_authenticated %}, {{ current_user.username }}!{% else %}!{% endif %}</h2>
     <h1 class="text-center">What are you making?</h1>
     <div class="button-group-lg" role="group" id="buttonbar">
         <button role="button" class="btn btn-primary">Chemex</button>
@@ -12,8 +13,8 @@
         <button role="button" class="btn btn-default">V60</button>
     </div>
 </div>
-<div class="container-fluid text-center" id="chemex">
-    <h1 class="text-center">Chemex</h1>
+<div class="container-fluid text-center" id="placeholder">
+    <h1 class="text-center">PLACEHOLDER</h1>
 </div>
 
 {% endblock %}
