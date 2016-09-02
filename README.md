@@ -4,3 +4,6 @@
 * fix up the scroll-spy based on the above
 * finish up the base layout of the front page
 * make a list of brewing paraphernalia I want to cover
+
+## back-end
+* implement brewlog.rating into log form and brewlog templates

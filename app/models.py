@@ -1,3 +1,4 @@
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
@@ -23,6 +24,7 @@ class User(UserMixin, db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     password_hash = db.Column(db.String(128))
     confirmed = db.Column(db.Boolean, default=False)
+    posts = db.relationship("BrewLog", backref="author", lazy="dynamic")
 
     @property
     def password(self):
@@ -94,3 +96,21 @@ class User(UserMixin, db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+class BrewLog(db.Model):
+    __tablename__="brewlogs"
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    origin = db.Column(db.String(64), index=True)
+    method = db.Column(db.String(64), index=True)
+    grind = db.Column(db.String(64))
+    water = db.Column(db.Integer)
+    coffee = db.Column(db.Integer)
+    temp = db.Column(db.Integer)
+    flavor = db.Column(db.Text)
+    notes = db.Column(db.Text)
+    rating = db.Column(db.Integer)
+    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def __repr__(self):
+        return '<BrewLog %r' % self.timestamp
