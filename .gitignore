@@ -1,4 +1,7 @@
 *.iml
+__pycache__/
+*.py[cod]
+*.so
 .gradle
 /local.properties
 /.idea/workspace.xml
