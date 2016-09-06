@@ -113,4 +113,4 @@ class BrewLog(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     def __repr__(self):
-        return '<BrewLog %r' % self.timestamp
+        return '<BrewLog {0}, {1}, author_id = {2}>'.format(self.origin, self.timestamp.strftime("%A %x"), self.author_id)
