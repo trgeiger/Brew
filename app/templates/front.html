@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block page_content %}
+{% if current_user.is_authenticated %}
+
+
 <div class="container-fluid text-center" id="top">
-    <h2 class="text-center">Hello{% if current_user.is_authenticated %}, {{ current_user.username }}!{% else %}!{% endif %}</h2>
+    <h2 class="text-center">Hello, {{ current_user.username }}!</h2>
     <h1 class="text-center">What are you making?</h1>
     <div class="button-group-lg" role="group" id="buttonbar">
         <button role="button" class="btn btn-primary">Chemex</button>
@@ -16,5 +19,12 @@
 <div class="container-fluid text-center" id="placeholder">
     <h1 class="text-center">PLACEHOLDER</h1>
 </div>
+{% else %}
+<div class="container-fluid text-center" id="top">
+    <h1 class="text-center">Welcome to Brew!</h1>
+    <h3 class="text-center">Brew is a simple reference and brew log for making and tracking your best cups of coffee.</h3>
 
+</div>
+
+{% endif %}
 {% endblock %}
