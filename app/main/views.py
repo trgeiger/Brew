@@ -21,6 +21,7 @@ def about():
 @login_required
 def brewlog():
     form = BrewLogForm()
+    form.origin(placeholder="e.g. Kenya")
     if form.validate_on_submit():
         brewlog = BrewLog(origin=form.origin.data,
                     method=form.method.data,
@@ -30,19 +31,31 @@ def brewlog():
                     temp=form.temp.data,
                     flavor=form.flavor.data,
                     notes=form.notes.data,
-                    author=current_user._get_current_object())
+                    author=current_user._get_current_object(),
+                    rating=form.rating.data)
         db.session.add(brewlog)
         db.session.commit()
         flash("Log saved.")
         return redirect(url_for("main.brewlog"))
-    brewlogs = BrewLog.query.filter_by(author_id=current_user.id).order_by(BrewLog.timestamp.desc()).all()
+    brewlogs = BrewLog.query.filter_by(author_id=current_user.id).order_by(BrewLog.timestamp.desc()).limit(5)
     return render_template('brewlog.html', form=form, brewlogs=brewlogs)
 
-@main.route('/abrewlog/<brewlogid>')
+@main.route('/abrewlog/<brewlogid>', methods=['POST', 'GET'])
 @login_required
 def abrewlog(brewlogid):
     thebrewlog = BrewLog.query.filter_by(id=brewlogid).first_or_404()
+    if request.method == 'POST':
+        db.session.delete(thebrewlog)
+        db.session.commit()
+        flash("Log Deleted.")
+        return redirect(url_for("main.loglist"))
     return render_template('abrewlog.html', thebrewlog=thebrewlog)
+
+@main.route('/loglist')
+@login_required
+def loglist():
+    brewlogs = BrewLog.query.filter_by(author_id=current_user.id).order_by(BrewLog.timestamp.desc()).all()
+    return render_template('loglist.html', brewlogs=brewlogs)
 
 
 @main.route('/welcome', methods=['GET'])

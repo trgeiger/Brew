@@ -5,7 +5,9 @@
 {% block head %}
 {{ super() }}
 <script src="https://use.fontawesome.com/187c16e5f1.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
 {% endblock %}
+
 
 {% block navbar %}
 <nav class="navbar navbar-default" data-spy="affix" data-offset-top="247">
@@ -20,9 +22,15 @@
 		</div>
 		<div class="navbar-collapse collapse" id="myNav">
 			<ul class="nav navbar-nav">
-				<li><a href="{{ url_for('main.index') }}">Main</a></li>
+				<li><a href="{{ url_for('main.index') }}">Start</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">BrewLog <span class="fa fa-angle-down"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/brewlog">New Log</a></li>
+                        <li><a href="/loglist">Log List</a></li>
+                    </ul>
+                </li>
 				<li><a href="/ratiocalc">Ratio Calculator</a></li>
-                <li><a href="/brewlog">Brew Log</a></li>
 				<li><a href="/about">About</a></li>
                 <li><a href="https://github.com/trgeiger/brew"><span class="fa fa-github" aria-hidden="true"></span> GitHub</a></li>
 			</ul>
@@ -47,8 +55,9 @@
 </nav>
 {% endblock %}
 
+
 {% block content %}
-<div class="container">
+<div class="container" id="main">
     {% for message in get_flashed_messages() %}
     <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -60,10 +69,11 @@
     {% endblock page_content %}
 
 </div>
-<footer class="container-fluid text-center" id="footer">
+
+<div class="text-center" id="footer">
 	<p class="text-muted">Created by Tayler Geiger with much <i class="fa fa-coffee"></i> and <i class="fa fa-heart"></i></p>
 	<p class="text-muted">Copyright 2016</p>
-</footer>
+</div>
 {% endblock content %}
 
 {% block scripts %}
