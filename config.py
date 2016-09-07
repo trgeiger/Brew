@@ -6,6 +6,7 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY") or 'dev key'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    BREW_POSTS_PER_PAGE = 20
 
     @staticmethod
     def init_app(app):

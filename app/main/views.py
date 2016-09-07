@@ -37,7 +37,7 @@ def brewlog():
         db.session.commit()
         flash("Log saved.")
         return redirect(url_for("main.brewlog"))
-    brewlogs = BrewLog.query.filter_by(author_id=current_user.id).order_by(BrewLog.timestamp.desc()).limit(5)
+    brewlogs = BrewLog.query.filter_by(author_id=current_user.id).order_by(BrewLog.timestamp.desc()).limit(10)
     return render_template('brewlog.html', form=form, brewlogs=brewlogs)
 
 @main.route('/abrewlog/<brewlogid>', methods=['POST', 'GET'])
@@ -54,8 +54,10 @@ def abrewlog(brewlogid):
 @main.route('/loglist')
 @login_required
 def loglist():
-    brewlogs = BrewLog.query.filter_by(author_id=current_user.id).order_by(BrewLog.timestamp.desc()).all()
-    return render_template('loglist.html', brewlogs=brewlogs)
+    page = request.args.get('page', 1, type=int)
+    pagination = BrewLog.query.filter_by(author_id=current_user.id).order_by(BrewLog.timestamp.desc()).paginate(page, per_page=current_app.config['BREW_POSTS_PER_PAGE'], error_out=False)
+    brewlogs = pagination.items
+    return render_template('loglist.html', brewlogs=brewlogs, pagination=pagination)
 
 
 @main.route('/welcome', methods=['GET'])

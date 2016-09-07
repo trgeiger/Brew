@@ -26,6 +26,24 @@ class User(UserMixin, db.Model):
     confirmed = db.Column(db.Boolean, default=False)
     posts = db.relationship("BrewLog", backref="author", lazy="dynamic")
 
+    staticmethod
+    def generate_fake(count=100):
+        from sqlalchemy.exc import IntegrityError
+        from random import seed
+        import forgery_py
+
+        seed()
+        for i in range(count):
+            u = User(email=forgery_py.internet.email_address(),
+                     username=forgery_py.internet.user_name(True),
+                     password=forgery_py.lorem_ipsum.word(),
+                     confirmed=True)
+            db.session.add(u)
+            try:
+                db.session.commit()
+            except IntegrityError:
+                db.session.rollback()
+
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')
@@ -111,6 +129,36 @@ class BrewLog(db.Model):
     notes = db.Column(db.Text)
     rating = db.Column(db.Integer)
     author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    @staticmethod
+    def generate_fake(count=100):
+        from random import seed, randint
+        import forgery_py
+
+        seed()
+        user_count = User.query.count()
+        for i in range(count):
+            u = User.query.offset(randint(0, user_count - 1)).first()
+            p = BrewLog(notes=forgery_py.lorem_ipsum.sentences(randint(1, 5)),
+                     timestamp=forgery_py.date.date(True),
+                     author=u, water=randint(100, 1000), temp=randint(150, 210), coffee=randint(10, 50),  origin=forgery_py.forgery.name.location(), rating=randint(1,5))
+            db.session.add(p)
+            db.session.commit()
+
+    @staticmethod
+    def generate_fake_tayler(count=100):
+        from random import seed, randint
+        import forgery_py
+
+        seed()
+        user_count = User.query.count()
+        for i in range(count):
+            u = User.query.filter_by(username='tayler').first()
+            p = BrewLog(notes=forgery_py.lorem_ipsum.sentences(randint(1, 5)),
+                     timestamp=forgery_py.date.date(True),
+                     author=u, water=randint(100, 1000), temp=randint(150, 210), coffee=randint(10, 50),  origin=forgery_py.forgery.name.location(), rating=randint(1,5))
+            db.session.add(p)
+            db.session.commit()
 
     def __repr__(self):
         return '<BrewLog {0}, {1}, author_id = {2}>'.format(self.origin, self.timestamp.strftime("%A %x"), self.author_id)

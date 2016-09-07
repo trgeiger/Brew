@@ -6,12 +6,13 @@
 {{ super() }}
 <script src="https://use.fontawesome.com/187c16e5f1.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrapflatly.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
+
 {% endblock %}
 
 
 {% block navbar %}
-<nav class="navbar navbar-default" data-spy="affix" data-offset-top="247">
+<nav class="navbar navbar-default" data-spy="affix" data-offset-top="247" id="mynav">
     <div class="container-fluid">
     	<div class="navbar-header">
     		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
@@ -19,7 +20,7 @@
 			    <span class="icon-bar"></span>
 			    <span class="icon-bar"></span>
 		    </button>
-			<a class="navbar-brand" href="/">Brew</a>
+			<a class="navbar-brand" href="/"><span class="fa fa-coffee"></span> Brew</a>
 		</div>
 		<div class="navbar-collapse collapse" id="myNav">
 			<ul class="nav navbar-nav">
@@ -40,7 +41,7 @@
 			<ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="fa fa-angle-down"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span> Account <span class="fa fa-angle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
                         <li><a href="{{ url_for('auth.account_settings') }}">Account Settings</a></li>
@@ -71,10 +72,12 @@
 
 </div>
 
-<div class="text-center" id="footer">
-	<p class="text-muted">Created by Tayler Geiger with much <i class="fa fa-coffee"></i> and <i class="fa fa-heart"></i></p>
-	<p class="text-muted">Copyright 2016</p>
-</div>
+<footer class="footer">
+    <div class="container text-center">
+    	<p class="text-muted">Created by Tayler Geiger with much <i class="fa fa-coffee"></i> and <i class="fa fa-heart"></i></p>
+    	<p class="text-muted">Copyright 2016</p>
+    </div>
+</footer>
 {% endblock content %}
 
 {% block scripts %}
