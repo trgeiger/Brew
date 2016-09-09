@@ -17,10 +17,9 @@ login_manager.session_protection = "strong"
 login_manager.login_view = "auth.login"
 
 
-def create_app(config_name, config_instance):
+def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-    app.config.from_pyfile(config_instance)
     config[config_name].init_app(app)
 
     bootstrap.init_app(app)
