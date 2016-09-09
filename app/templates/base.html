@@ -5,6 +5,7 @@
 {% block head %}
 {{ super() }}
 <script src="https://use.fontawesome.com/187c16e5f1.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
 
@@ -97,5 +98,7 @@
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+<script>new WOW().init();</script>
 
 {% endblock %}

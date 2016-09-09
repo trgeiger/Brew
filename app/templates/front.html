@@ -4,7 +4,7 @@
 {% if current_user.is_authenticated %}
 
 
-<div class="container-fluid text-center" id="top">
+<div class="container-fluid text-center wow fadeIn" id="top">
     <h2 class="text-center">Hello, {{ current_user.username }}!</h2>
     <h1 class="text-center">What are you making?</h1>
 </div>
@@ -12,9 +12,9 @@
 {% else %}
 
 <div class="jumbotron text-center">
-    <h1 class="page-header">Welcome to Brew</h1>
-    <p>Brew is a simple brew log and reference manual for crafting and tracking your best cups of coffee.</p>
-    <p>To get started, either <a href="{{ url_for('auth.signup') }}">create your free account</a> or keep scrolling for more information.</p>
+    <h1 class="page-header wow fadeIn">Welcome to Brew</h1>
+    <p class="wow fadeIn">Brew is a simple brew log and reference manual for crafting and tracking your best cups of coffee.</p>
+    <p class="wow fadeIn">To get started, either <a href="{{ url_for('auth.signup') }}">create your free account</a> or keep scrolling for more information.</p>
 </div>
 
 <div class="container" id="reference">
@@ -28,7 +28,7 @@
                 <li>Learn about new brewing methods like Aeropress, Chemex, and vacuum pots, along with the perfect recipes for each.</li>
             </ul>
         </div>
-        <div class="col-sm-4 text-center">
+        <div class="col-sm-4 text-center wow fadeInLeft" data-wow-offset="250">
             <span class="fa fa-book logo"></span>
         </div>
     </div>
@@ -45,7 +45,7 @@
                 <li>Rate every cup so you can see whether that new recipe is too full-bodied, or just right.</li>
             </ul>
         </div>
-        <div class="col-sm-4 text-center">
+        <div class="col-sm-4 text-center wow fadeInLeft" data-wow-offset="250">
             <span class="fa fa-bar-chart logo"></span>
         </div>
     </div>
@@ -60,7 +60,7 @@
                 <li>Made with mobile devices in mind, Brew works perfectly as an app-like webpage. Just save a shortcut to Brew on your phone's main screen and have the power of Brew and your BrewLog always on the ready.</li>
                 <li>Brew is also open-source, so feel free to not only tweak your coffee, but Brew's source code as well.</li>
         </div>
-        <div class="col-sm-4 text-center">
+        <div class="col-sm-4 text-center wow fadeInLeft" data-wow-offset="250">
             <span class="fa fa-flask logo"></span>
         </div>
     </div>
@@ -73,38 +73,38 @@
   <h2>Pick Your Poison</h2>
   <h4>Brew Methods</h4>
   <br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
+  <div class="row wow fadeInUp">
+    <div class="col-sm-4  wow fadeInUp">
       <span class="fa fa-coffee logo-small"></span>
       <h4>CHEMEX</h4>
       <p>Called "one of the best-designed products of modern times". Also makes a clean cup of coffee.</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4  wow fadeInUp">
       <span class="fa fa-pencil logo-small"></span>
       <h4>FRENCH PRESS</h4>
       <p>The classic coffee press, perfect for a full-bodied cup with no hassle.</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4  wow fadeInUp">
       <span class="glyphicon glyphicon-lock logo-small"></span>
       <h4>MOKA POT</h4>
       <p>Lorem ipsum dolor sit amet..</p>
     </div>
   </div>
   <br><br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
+  <div class="row">
+    <div class="col-sm-4  wow fadeInUp">
       <span class="glyphicon glyphicon-leaf logo-small"></span>
       <h4>V60</h4>
       <p>Lorem ipsum dolor sit amet..</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4  wow fadeInUp">
       <span class="glyphicon glyphicon-certificate logo-small"></span>
       <h4>VACUUM POT</h4>
       <p>Lorem ipsum dolor sit amet..</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4  wow fadeInUp">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4>DRIP</h4>
+      <h4>AEROPRESS</h4>
       <p>Lorem ipsum dolor sit amet..</p>
     </div>
   </div>
