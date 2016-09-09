@@ -42,7 +42,7 @@ def signup():
         token = user.generate_confirmation_token()
         send_email(user.email, "Confirm Your Brew Account", "auth/email/confirm", user=user, token=token)
         flash("A confirmation email has been sent. Please confirm your account.")
-        return redirect(url_for("main.front"))
+        return redirect(url_for("main.index"))
     return render_template('auth/signup.html', form=form)
 
 @auth.route('/confirm/<token>')
