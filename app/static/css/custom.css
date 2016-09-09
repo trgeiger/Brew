@@ -1,0 +1,113 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #fdf6e3;
+    color: #657b83;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    line-height: 2;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 100px;
+    background-color: #eee8d5;
+}
+
+.jumbotron {
+    background-color: #eee8d5;
+}
+
+.logo {
+    font-size: 200px;
+    padding-top: 75px;
+}
+
+.logo-small {
+    font-size: 50px;
+}
+
+.navbar {
+    border: 0;
+}
+
+.dropdown-menu {
+    background-color: #fdf6e3;
+}
+
+.container-fluid {
+
+}
+
+
+strong {
+    color: #268bd2;
+}
+
+label {
+    color: #268bd2;
+}
+
+a {
+    color: #2aa198;
+}
+
+#main {
+    padding-bottom: 50px;
+}
+
+#chemex {;
+}
+
+#frenchpress {
+}
+
+#mokapot {
+
+}
+
+#mynav {
+    background-color: #eee8d5;
+}
+
+#brewmethods {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #eee8d5;
+    border-radius: 50px;
+}
+
+#perfect, #track, #reference {
+    padding: 50px;
+}
+
+#footer {
+    padding-top: 20px;
+}
+
+#flash {
+    background-color: #eee8d5;
+    border-color: transparent;
+}
+
+#alert {
+    background-color: #fdf6e3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #586e75;
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 30px;
+}
+
+.pagination {
+}

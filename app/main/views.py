@@ -63,3 +63,28 @@ def loglist():
 @main.route('/welcome', methods=['GET'])
 def welcome():
     return render_template("welcome.html")
+
+
+@main.route('/chemex')
+def chemex():
+    return render_template('chemex.html')
+
+@main.route('/frenchpress')
+def frenchpress():
+    return render_template('frenchpress.html')
+
+@main.route('/v60')
+def v60():
+    return render_template('v60.html')
+
+@main.route('/vacuum')
+def vacuum():
+    return render_template('vacuum.html')
+
+@main.route('/mokapot')
+def mokapot():
+    return render_template('mokapot.html')
+
+@main.route('/aeropress')
+def aeropress():
+    return render_template('aeropress.html')

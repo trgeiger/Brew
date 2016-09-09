@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Brew Log Notebook{% endblock %}
+
+{% block page_content %}
+<div class="container">
+<div class="page-header">
+    <h1>Log List</h1>
+</div>
+
+<div class="col-md-12">
+    <ul class="brewlogs">
+    {% for brewlog in brewlogs %}
+        <li class="brewlog">
+            <a href="{{ url_for('.abrewlog', brewlogid=brewlog.id) }}">{{ brewlog.origin }}, {{ brewlog.timestamp.strftime("%A %x") }}</a>
+    {% endfor %}
+    </ul>
+</div>
+
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.loglist') }}
+</div>
+</div>
+{% endif %}
+
+{% endblock %}

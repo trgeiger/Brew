@@ -10,9 +10,11 @@
 
 {% endblock %}
 
+{% block body_attribs %} data-spy="scroll" data-target=".navbar" data-offset="50" {% endblock %}
+
 
 {% block navbar %}
-<nav class="navbar navbar-default" data-spy="affix" data-offset-top="247" id="mynav">
+<nav class="navbar navbar-default navbar-fixed-top" data-spy="affix" data-offset-top="247" id="mynav">
     <div class="container-fluid">
     	<div class="navbar-header">
     		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
@@ -22,9 +24,22 @@
 		    </button>
 			<a class="navbar-brand" href="/"><span class="fa fa-coffee"></span> Brew</a>
 		</div>
+
+        <!-- Left navbar items -->
 		<div class="navbar-collapse collapse" id="myNav">
 			<ul class="nav navbar-nav">
-				<li><a href="{{ url_for('main.index') }}">Start</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Start <span class="fa fa-angle-down"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('main.chemex') }}">Chemex</a></li>
+                        <li><a href="{{ url_for('main.frenchpress') }}">French Press</a></li>
+                        <li><a href="{{ url_for('main.mokapot') }}">Moka Pot</a></li>
+                        <li><a href="{{ url_for('main.v60') }}">V60</a></li>
+                        <li><a href="{{ url_for('main.vacuum') }}">Vacuum Pot</a></li>
+                        <li><a href="{{ url_for('main.aeropress') }}">Aeropress</a></li>
+
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">BrewLog <span class="fa fa-angle-down"></span></a>
                     <ul class="dropdown-menu">
@@ -32,9 +47,7 @@
                         <li><a href="/loglist">Log List</a></li>
                     </ul>
                 </li>
-				<li><a href="/ratiocalc">Ratio Calculator</a></li>
 				<li><a href="/about">About</a></li>
-                <li><a href="https://github.com/trgeiger/brew"><span class="fa fa-github" aria-hidden="true"></span> GitHub</a></li>
 			</ul>
 
             <!-- Account Dropdown Menu -->
@@ -55,32 +68,34 @@
     	</div>
     </div>
 </nav>
-{% endblock %}
+{% endblock navbar %}
 
 
 {% block content %}
-<div class="container" id="main">
+
+<div class="container-fluid" id="flash">
     {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
+    <div class="alert alert-warning" id="alert">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         {{ message }}
     </div>
     {% endfor %}
+</div>
 
     {% block page_content %}
     {% endblock page_content %}
 
-</div>
-
 <footer class="footer">
-    <div class="container text-center">
+    <div class="container text-center" id="footer">
     	<p class="text-muted">Created by Tayler Geiger with much <i class="fa fa-coffee"></i> and <i class="fa fa-heart"></i></p>
     	<p class="text-muted">Copyright 2016</p>
     </div>
 </footer>
+
 {% endblock content %}
 
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
+
 {% endblock %}

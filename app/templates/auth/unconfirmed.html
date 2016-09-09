@@ -3,6 +3,7 @@
 {% block title %}Confirm your account{% endblock %}
 
 {% block page_content %}
+<div class="container">
 <div class="page-header">
     <h1>Hello, {{ current_user.username }}!</h1>
     <h3>You have not confirmed your account yet.</h3>
@@ -14,5 +15,6 @@
         Need a new confirmation email?
         <a href="{{ url_for('auth.resend_confirmation') }}">Click here</a>
     </p>
+</div>
 </div>
 {% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Brew Log Notebook{% endblock %}
+
+{% block page_content %}
+<div class="container-fluid">
+<div class="page-header">
+    <h1>{{ thebrewlog.origin }}, {{ thebrewlog.timestamp.strftime("%A %x") }}</h1>
+</div>
+
+<div class="col-md-3">
+    <p><strong>Method:</strong> {{ thebrewlog.method }}</p>
+    <p><strong>Grind:</strong> {{ thebrewlog.grind }}</p>
+</div>
+
+<div class="col-md-3">
+    <p><strong>Water:</strong> {{ thebrewlog.water }} g</p>
+    <p><strong>Coffee:</strong> {{ thebrewlog.coffee }} g</p>
+</div>
+
+<div class="col-md-3">
+    <p><strong>Temperature:</strong> {{ thebrewlog.temp }}</p>
+    <p><strong>Notes:</strong> {{ thebrewlog.notes }}</p>
+</div>
+
+<div class="col-md-3">
+    <p><strong>Flavor Profile:</strong> {{ thebrewlog.flavor }}</p>
+    <p><strong>Rating:</strong> {{ thebrewlog.rating }}</p>
+</div>
+<div class="container-fluid text-center">
+    <form action="{{ url_for('.abrewlog', brewlogid=thebrewlog.id) }}" method="post">
+        <input type="submit" value="Delete Log" class="btn btn-danger">
+    </form>
+</div>
+</div>
+{% endblock %}
