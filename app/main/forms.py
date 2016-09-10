@@ -2,17 +2,10 @@ from flask_wtf import Form
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField, IntegerField, SelectField, BooleanField, DecimalField
 from wtforms.validators import Required, DataRequired, Email, Optional
 
-# Forms
-class NameEmailPassForm(Form):
-    name = StringField('Name', validators=[Optional()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField("Keep me logged in")
-    submit = SubmitField('Login')
 
 class BrewLogForm(Form):
     origin = StringField("Coffee Origin", render_kw={"placeholder": "e.g. Kenya"})
-    method = SelectField("Brew Method", choices=[('Drip', 'Drip'), ('Chemex', 'Chemex'), ('V60', 'V60'), ('Aeropress', 'Aeropress'), ('French Press', 'French Press'), ('Moka Pot', 'Moka Pot'), ('Vacuum Pot', 'Vacuum Pot'), ('Cold Brew', 'Cold Brew')])
+    method = SelectField("Brew Method", choices=[('Drip', 'Drip'), ('Chemex', 'Chemex'), ('Hario V60', 'Hario V60'), ('Aeropress', 'Aeropress'), ('French Press', 'French Press'), ('Moka Pot', 'Moka Pot'), ('Vacuum Pot', 'Vacuum Pot')])
     grind = StringField("Grind", render_kw={"placeholder": "e.g. 17 on home grinder"})
     water = IntegerField("Water in grams", render_kw={"placeholder": "e.g. 500"})
     coffee = IntegerField("Coffee in grams", render_kw={"placeholder": "e.g. 17"})
