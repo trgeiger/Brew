@@ -4,7 +4,7 @@ from .. import db
 from ..models import User, BrewLog
 from ..email import send_email
 from . import main
-from .forms import NameEmailPassForm, BrewLogForm
+from .forms import BrewLogForm
 
 
 @main.route('/', methods=['POST', 'GET'])
