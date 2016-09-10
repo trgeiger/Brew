@@ -1,9 +1,5 @@
-# TODO
+#Brew README
 
-## * make the base.html generate the navbar content from the elements on the current page
-* fix up the scroll-spy based on the above
-* finish up the base layout of the front page
-* make a list of brewing paraphernalia I want to cover
+You can preview Brew at brewcoffee.herokuapp.com--currently, all the more difficult stuff is working, such as account creation, user authentication, and account management, as well as the BrewLog where you can store ratings and variables about different pots of coffee for future reference.
 
-## back-end
-* implement brewlog.rating into log form and brewlog templates
+The instructional bit, where you can read precise directions for the different brewing paraphernalia will be coming soon.
